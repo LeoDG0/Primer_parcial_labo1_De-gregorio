@@ -1,0 +1,553 @@
+[
+  {
+    "id": 1,
+    "nombre": "Alimento para perros",
+    "marca": "Pedigree",
+    "precio": 12.99,
+    "caracteristicas": [
+      "Sabor delicioso",
+      "Nutrici\u00f3n equilibrada",
+      "Contiene vitaminas y minerales"
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Alimento para gatos",
+    "marca": "Purina ONE",
+    "precio": 9.99,
+    "caracteristicas": [
+      "Alta calidad",
+      "Prote\u00ednas de primera",
+      "Promueve un pelaje saludable"
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Juguete para perros",
+    "marca": "Kong",
+    "precio": 15.5,
+    "caracteristicas": [
+      "Duradero",
+      "Ideal para masticadores agresivos"
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "Arenero para gatos",
+    "marca": "Arm & Hammer",
+    "precio": 19.99,
+    "caracteristicas": [
+      "Control de olores",
+      "F\u00e1cil de limpiar"
+    ]
+  },
+  {
+    "id": 5,
+    "nombre": "Correa para perros",
+    "marca": "Flexi",
+    "precio": 24.99,
+    "caracteristicas": [
+      "Extensible",
+      "Mango ergon\u00f3mico",
+      "Cinta reflectante"
+    ]
+  },
+  {
+    "id": 6,
+    "nombre": "Cama para perros",
+    "marca": "Aspen Pet",
+    "precio": 29.99,
+    "caracteristicas": [
+      "Material suave",
+      "Lavable a m\u00e1quina",
+      "C\u00f3moda y acogedora"
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Juguete para gatos",
+    "marca": "Frolicat",
+    "precio": 19.99,
+    "caracteristicas": [
+      "Juguete interactivo",
+      "Movimientos impredecibles",
+      "Mantiene a los gatos activos"
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Acuario",
+    "marca": "Tetra",
+    "precio": 39.99,
+    "caracteristicas": [
+      "10 galones",
+      "Filtro incorporado",
+      "Ideal para peces tropicales"
+    ]
+  },
+  {
+    "id": 9,
+    "nombre": "Alimento para perros",
+    "marca": "Pro Plan",
+    "precio": 18.5,
+    "caracteristicas": [
+      "Ingredientes naturales",
+      "Alta digestibilidad",
+      "Para todas las etapas de vida"
+    ]
+  },
+  {
+    "id": 10,
+    "nombre": "Correa para perros",
+    "marca": "Halti",
+    "precio": 14.99,
+    "caracteristicas": [
+      "Control de tirones",
+      "Ajustable",
+      "C\u00f3moda para el perro y el due\u00f1o"
+    ]
+  },
+  {
+    "id": 11,
+    "nombre": "Alimento para gatos",
+    "marca": "Science Diet",
+    "precio": 16.99,
+    "caracteristicas": [
+      "F\u00f3rmula equilibrada",
+      "Control de peso",
+      "Promueve la salud urinaria"
+    ]
+  },
+  {
+    "id": 12,
+    "nombre": "Cama para gatos",
+    "marca": "PetFusion",
+    "precio": 34.99,
+    "caracteristicas": [
+      "Dise\u00f1o elegante",
+      "Material duradero",
+      "F\u00e1cil de limpiar"
+    ]
+  },
+  {
+    "id": 13,
+    "nombre": "Juguete para perros",
+    "marca": "Nylabone",
+    "precio": 9.99,
+    "caracteristicas": [
+      "Resistente a la masticaci\u00f3n",
+      "Ayuda a la higiene dental"
+    ]
+  },
+  {
+    "id": 14,
+    "nombre": "Arenero para gatos",
+    "marca": "Purina Tidy Cats",
+    "precio": 12.99,
+    "caracteristicas": [
+      "Sistema todo en uno",
+      "Bandeja removible",
+      "F\u00e1cil de mantener"
+    ]
+  },
+  {
+    "id": 15,
+    "nombre": "Alimento para perros",
+    "marca": "Blue Buffalo",
+    "precio": 21.99,
+    "caracteristicas": [
+      "Ingredientes naturales",
+      "Sin granos",
+      "Para razas peque\u00f1as"
+    ]
+  },
+  {
+    "id": 16,
+    "nombre": "Transportadora para gatos",
+    "marca": "Sherpa",
+    "precio": 32.99,
+    "caracteristicas": [
+      "Aprobada por aerol\u00edneas",
+      "C\u00f3moda y segura",
+      "Ventilaci\u00f3n adecuada"
+    ]
+  },
+  {
+    "id": 17,
+    "nombre": "Juguete para gatos",
+    "marca": "Cat Dancer",
+    "precio": 5.99,
+    "caracteristicas": [
+      "Juguete interactivo",
+      "Atrae la atenci\u00f3n de los gatos",
+      "Horas de diversi\u00f3n"
+    ]
+  },
+  {
+    "id": 18,
+    "nombre": "Alimento para perros",
+    "marca": "Iams",
+    "precio": 14.5,
+    "caracteristicas": [
+      "Control de peso",
+      "Prote\u00ednas de calidad",
+      "Sabor delicioso"
+    ]
+  },
+  {
+    "id": 19,
+    "nombre": "Arenero para gatos",
+    "marca": "Litter Genie",
+    "precio": 19.99,
+    "caracteristicas": [
+      "F\u00e1cil eliminaci\u00f3n de desechos",
+      "Control de olores",
+      "Pr\u00e1ctico y conveniente"
+    ]
+  },
+  {
+    "id": 20,
+    "nombre": "Correa para perros",
+    "marca": "Ruffwear",
+    "precio": 27.99,
+    "caracteristicas": [
+      "Resistente al agua",
+      "Ideal para actividades al aire libre",
+      "C\u00f3moda para el perro y el due\u00f1o"
+    ]
+  },
+  {
+    "id": 21,
+    "nombre": "Cama para perros",
+    "marca": "Kuranda",
+    "precio": 69.99,
+    "caracteristicas": [
+      "Elevada",
+      "Duradera",
+      "F\u00e1cil de limpiar"
+    ]
+  },
+  {
+    "id": 22,
+    "nombre": "Alimento para gatos",
+    "marca": "Wellness",
+    "precio": 22.5,
+    "caracteristicas": [
+      "Ingredientes naturales",
+      "Alta calidad",
+      "Promueve la salud digestiva",
+      "Sin granos"
+    ]
+  },
+  {
+    "id": 23,
+    "nombre": "Juguete para perros",
+    "marca": "Chuckit!",
+    "precio": 8.99,
+    "caracteristicas": [
+      "Resistente",
+      "Ideal para juegos de lanzamiento"
+    ]
+  },
+  {
+    "id": 24,
+    "nombre": "Corral para mascotas",
+    "marca": "MidWest Homes for Pets",
+    "precio": 39.99,
+    "caracteristicas": [
+      "Plegable",
+      "F\u00e1cil de transportar",
+      "Espacioso"
+    ]
+  },
+  {
+    "id": 25,
+    "nombre": "Alimento para perros",
+    "marca": "Nutro",
+    "precio": 17.99,
+    "caracteristicas": [
+      "Ingredientes de calidad",
+      "Sin conservantes artificiales",
+      "Salud digestiva"
+    ]
+  },
+  {
+    "id": 26,
+    "nombre": "Rascador para gatos",
+    "marca": "GoPetClub",
+    "precio": 49.99,
+    "caracteristicas": [
+      "\u00c1rea de juego y descanso",
+      "Poste para rascar",
+      "Incluye juguetes colgantes"
+    ]
+  },
+  {
+    "id": 27,
+    "nombre": "Juguete interactivo para perros",
+    "marca": "Kong Wobbler",
+    "precio": 14.99,
+    "caracteristicas": [
+      "Dispensador de alimentos",
+      "Mantiene a los perros entretenidos"
+    ]
+  },
+  {
+    "id": 28,
+    "nombre": "Comedero para mascotas",
+    "marca": "Bergan",
+    "precio": 7.99,
+    "caracteristicas": [
+      "Antideslizante",
+      "F\u00e1cil de limpiar",
+      "Duradero"
+    ]
+  },
+  {
+    "id": 29,
+    "nombre": "Alimento para gatos",
+    "marca": "Royal Canin",
+    "precio": 24.99,
+    "caracteristicas": [
+      "F\u00f3rmula espec\u00edfica para razas",
+      "Salud digestiva",
+      "Pelo brillante"
+    ]
+  },
+  {
+    "id": 30,
+    "nombre": "Collar para perros",
+    "marca": "Coastal",
+    "precio": 9.99,
+    "caracteristicas": [
+      "Ajustable",
+      "Cierre de seguridad",
+      "Dise\u00f1o atractivo"
+    ]
+  },
+  {
+    "id": 31,
+    "nombre": "Arn\u00e9s para perros",
+    "marca": "Rabbitgoo",
+    "precio": 19.99,
+    "caracteristicas": [
+      "Ajustable",
+      "C\u00f3modo",
+      "Control de tirones"
+    ]
+  },
+  {
+    "id": 32,
+    "nombre": "Alimento para perros",
+    "marca": "Pedigree",
+    "precio": 19.5,
+    "caracteristicas": [
+      "Ingredientes naturales",
+      "Sin granos",
+      "Salud \u00f3ptima"
+    ]
+  },
+  {
+    "id": 33,
+    "nombre": "Juguete para gatos",
+    "marca": "Temperament Pet",
+    "precio": 6.99,
+    "caracteristicas": [
+      "Rellenable con catnip",
+      "Estimula el instinto de caza"
+    ]
+  },
+  {
+    "id": 34,
+    "nombre": "Bebedero para mascotas",
+    "marca": "Gravity Waterer",
+    "precio": 12.99,
+    "caracteristicas": [
+      "Capacidad de 1 gal\u00f3n",
+      "Mantiene el agua fresca"
+    ]
+  },
+  {
+    "id": 35,
+    "nombre": "Peine para perros",
+    "marca": "Safari",
+    "precio": 9.99,
+    "caracteristicas": [
+      "Elimina nudos y pelo suelto",
+      "Ideal para perros de pelo largo"
+    ]
+  },
+  {
+    "id": 36,
+    "nombre": "Juguete para perros",
+    "marca": "Outward Hound",
+    "precio": 11.99,
+    "caracteristicas": [
+      "Texturas variadas",
+      "Estimula el juego activo"
+    ]
+  },
+  {
+    "id": 37,
+    "nombre": "Cepillo para gatos",
+    "marca": "Hertzko",
+    "precio": 7.99,
+    "caracteristicas": [
+      "Suave y seguro",
+      "Elimina el pelo muerto",
+      "Promueve un pelaje saludable"
+    ]
+  },
+  {
+    "id": 38,
+    "nombre": "Arena para gatos",
+    "marca": "Wellness",
+    "precio": 14.99,
+    "caracteristicas": [
+      "Ecol\u00f3gica",
+      "Sin polvo",
+      "Control de olores eficiente"
+    ]
+  },
+  {
+    "id": 39,
+    "nombre": "Ropa para perros",
+    "marca": "Pet Life",
+    "precio": 19.99,
+    "caracteristicas": [
+      "Dise\u00f1o moderno",
+      "C\u00f3moda y ajustable",
+      "Ideal para climas fr\u00edos"
+    ]
+  },
+  {
+    "id": 40,
+    "nombre": "Alimento para peces",
+    "marca": "Tetra",
+    "precio": 5.99,
+    "caracteristicas": [
+      "Variedad de sabores",
+      "Alta calidad nutricional",
+      "Para peces tropicales"
+    ]
+  },
+  {
+    "id": 41,
+    "nombre": "Transportadora para perros",
+    "marca": "AmazonBasics",
+    "precio": 24.99,
+    "caracteristicas": [
+      "Aprobada por aerol\u00edneas",
+      "Puerta con cierre seguro",
+      "Ventilaci\u00f3n adecuada"
+    ]
+  },
+  {
+    "id": 42,
+    "nombre": "Juguete para gatos",
+    "marca": "Bergan Turbo Scratcher",
+    "precio": 14.99,
+    "caracteristicas": [
+      "Incluye bola y rascador",
+      "Estimula el juego y el rascado"
+    ]
+  },
+  {
+    "id": 43,
+    "nombre": "Cepillo para perros",
+    "marca": "Pedigree",
+    "precio": 17.99,
+    "caracteristicas": [
+      "Remueve el pelo suelto",
+      "F\u00e1cil de limpiar",
+      "Para pelo corto o largo"
+    ]
+  },
+  {
+    "id": 44,
+    "nombre": "Juguete para perros",
+    "marca": "Nylabone Dura",
+    "precio": 9.99,
+    "caracteristicas": [
+      "Resistente a la masticaci\u00f3n",
+      "Promueve la salud dental",
+      "Diversi\u00f3n duradera"
+    ]
+  },
+  {
+    "id": 45,
+    "nombre": "Alimento para perros",
+    "marca": "Merrick",
+    "precio": 23.99,
+    "caracteristicas": [
+      "Ingredientes de calidad",
+      "Sin granos",
+      "Promueve una digesti\u00f3n saludable"
+    ]
+  },
+  {
+    "id": 46,
+    "nombre": "Correa para perros",
+    "marca": "Max and Neo",
+    "precio": 16.99,
+    "caracteristicas": [
+      "Reflectante",
+      "Mango acolchado",
+      "Resistente y duradera"
+    ]
+  },
+  {
+    "id": 47,
+    "nombre": "Cama para gatos",
+    "marca": "Frisco",
+    "precio": 22.99,
+    "caracteristicas": [
+      "Material suave y c\u00e1lido",
+      "Dise\u00f1o compacto",
+      "Ideal para espacios peque\u00f1os"
+    ]
+  },
+  {
+    "id": 48,
+    "nombre": "Juguete para perros",
+    "marca": "West Paw Design",
+    "precio": 13.99,
+    "caracteristicas": [
+      "Resistente",
+      "Libre de BPA",
+      "Ideal para juegos de buscar"
+    ]
+  },
+  {
+    "id": 49,
+    "nombre": "Arenero para gatos",
+    "marca": "Petmate",
+    "precio": 16.99,
+    "caracteristicas": [
+      "F\u00e1cil acceso",
+      "Borde alto",
+      "F\u00e1cil de limpiar"
+    ]
+  },
+  {
+    "id": 50,
+    "nombre": "Alimento para perros",
+    "marca": "Wellness CORE",
+    "precio": 29.99,
+    "caracteristicas": [
+      "Alta prote\u00edna",
+      "Ingredientes naturales",
+      "Sin granos",
+      "Salud digestiva"
+    ]
+  },
+  {
+    "id": 51,
+    "nombre": "Monster de mango loco",
+    "marca": "Nutro",
+    "precio": 500.0,
+    "caracteristicas": [
+      "Buena para programadores"
+    ]
+  }
+]

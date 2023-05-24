@@ -1,0 +1,4 @@
+Factura de la compra:
+
+Cama para gatos - Cantidad: 2 - Precio: $22.99 - Subtotal: $45.98
+total de compra: $45.98
