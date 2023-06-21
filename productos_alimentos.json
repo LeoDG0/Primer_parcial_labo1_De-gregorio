@@ -8,7 +8,8 @@
             "Ingredientes naturales",
             "Sin granos",
             "Para razas peque\u00f1as"
-        ]
+        ],
+        "stock": 6
     },
     {
         "id": 18,
@@ -19,7 +20,8 @@
             "Control de peso",
             "Prote\u00ednas de calidad",
             "Sabor delicioso"
-        ]
+        ],
+        "stock": 3
     },
     {
         "id": 45,
@@ -30,7 +32,8 @@
             "Ingredientes de calidad",
             "Sin granos",
             "Promueve una digesti\u00f3n saludable"
-        ]
+        ],
+        "stock": 5
     },
     {
         "id": 25,
@@ -41,7 +44,8 @@
             "Ingredientes de calidad",
             "Sin conservantes artificiales",
             "Salud digestiva"
-        ]
+        ],
+        "stock": 4
     },
     {
         "id": 32,
@@ -52,7 +56,8 @@
             "Ingredientes naturales",
             "Sin granos",
             "Salud \u00f3ptima"
-        ]
+        ],
+        "stock": 4
     },
     {
         "id": 1,
@@ -63,7 +68,8 @@
             "Sabor delicioso",
             "Nutrici\u00f3n equilibrada",
             "Contiene vitaminas y minerales"
-        ]
+        ],
+        "stock": 9
     },
     {
         "id": 9,
@@ -74,7 +80,8 @@
             "Ingredientes naturales",
             "Alta digestibilidad",
             "Para todas las etapas de vida"
-        ]
+        ],
+        "stock": 9
     },
     {
         "id": 2,
@@ -85,7 +92,8 @@
             "Alta calidad",
             "Prote\u00ednas de primera",
             "Promueve un pelaje saludable"
-        ]
+        ],
+        "stock": 8
     },
     {
         "id": 29,
@@ -96,7 +104,8 @@
             "F\u00f3rmula espec\u00edfica para razas",
             "Salud digestiva",
             "Pelo brillante"
-        ]
+        ],
+        "stock": 8
     },
     {
         "id": 11,
@@ -107,7 +116,8 @@
             "F\u00f3rmula equilibrada",
             "Control de peso",
             "Promueve la salud urinaria"
-        ]
+        ],
+        "stock": 3
     },
     {
         "id": 40,
@@ -118,7 +128,8 @@
             "Variedad de sabores",
             "Alta calidad nutricional",
             "Para peces tropicales"
-        ]
+        ],
+        "stock": 6
     },
     {
         "id": 22,
@@ -130,7 +141,8 @@
             "Alta calidad",
             "Promueve la salud digestiva",
             "Sin granos"
-        ]
+        ],
+        "stock": 4
     },
     {
         "id": 50,
@@ -142,6 +154,7 @@
             "Ingredientes naturales",
             "Sin granos",
             "Salud digestiva"
-        ]
+        ],
+        "stock": 9
     }
 ]

@@ -148,7 +148,7 @@ def validar_string_input():
 def buscar_insumo_por_caracteristica(lista):
 
     # valido que sea solo letras y espacio en blanco
-    caracteristica = validar_string_input()
+    caracteristica = validar_string_input().capitalize()
 
     insumos_por_caracteristica = []  # lista para guardar los insumos
 
