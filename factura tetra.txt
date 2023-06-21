@@ -1,0 +1,4 @@
+Factura de la compra:
+
+Acuario - Cantidad: 10 - Precio: $59.85463891039899 - Subtotal: $598.55
+total de compra: $598.5463891039899

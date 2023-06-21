@@ -96,16 +96,26 @@ while True:
                 print("Primero se deben cargar los datos!")
         case 10:
             if(flag_datos == True):
+                mostrar_stock_por_marca(lista)
+            else:
+                print("Primero se deben cargar los datos!")
+        case 11:
+            if(flag_datos == True):
+                imprimir_bajo_stock(lista)
+            else:
+                print("Primero se deben cargar los datos!")
+        case 12:
+            if(flag_datos == True):
                 agregar_productos(lista, cargar_marcas())
                 flag_insumo_nuevo = True
             else:
                 print("Primero se deben cargar los datos!")
-        case 11:
+        case 13:
             if(flag_datos == True and flag_insumo_nuevo == True):
                 guardar_tipo_archivo(lista)
             else:
                 print("Primero se deben cargar los datos y agregar un producto!")
-        case 12:
+        case 14:
             salir = input("Confirma salida? (s/n)")
             if(salir.lower() == "s"):
                 break

@@ -1,4 +1,6 @@
 import json
+import csv
+import random
 
 def menuPrincipal():
     print(" ___________________________________")
@@ -14,9 +16,11 @@ def menuPrincipal():
     print("|7-Guardar en formato JSON          |")
     print("|8-Leer desde formato JSON          |")
     print("|9-Actualizar precios               |")
-    print("|10-Agregar nuevo produto           |")
-    print("|11-Guarda en formato csv o json    |")
-    print("|12-Salir del programa              |")
+    print("|10-Mostrar stock por marca         |")
+    print("|11-Generar lista bajo stock        |")
+    print("|12-Agregar nuevo produto           |")
+    print("|13-Guarda en formato csv o json    |")
+    print("|14-Salir del programa              |")
     print("|___________________________________|")
     while True:
         try:
@@ -40,22 +44,14 @@ def cargar_datos_desde_csv():
             try:
                 with open(nombre_archivo, "r", encoding='utf-8') as archivo:
                     next(archivo)
+                    datos = archivo.readlines()
+                    datos = [line.strip().split(",") for line in datos]
 
-                    for linea in archivo:
-                        # saca los espacios en blanco y separa por campos en base a la ,
-                        linea = linea.strip("\n").split(',')
+                    for linea in datos:
+                        insumo = calcular_stock(linea)
+                        insumos.append(insumo)
 
-                        if linea[0]:  # Verificar si la cadena no está vacía
-                            insumo = {
-                                'id': int(linea[0]),
-                                'nombre': linea[1],
-                                'marca': linea[2],
-                                'precio': float(linea[3].replace('$', '')),
-                                'caracteristicas': linea[4].split("~")
-                            }  # obtengo los datos
-
-                            insumos.append(insumo)  # agrego el diccionario a la lista
-                break
+                    break
             
             except FileNotFoundError:
                 print("El archivo no existe. Ingrese un nombre valido!")
@@ -64,6 +60,17 @@ def cargar_datos_desde_csv():
     
     return insumos
 
+
+def calcular_stock(datos):
+    insumo = {
+        'id': int(datos[0]),
+        'nombre': datos[1],
+        'marca': datos[2],
+        'precio': float(datos[3].replace('$', '')),
+        'caracteristicas': datos[4].split("~"),
+        'stock': random.randint(0, 10)
+    }  
+    return insumo
 
 
 
@@ -218,11 +225,11 @@ def validar_int_input():
 def listar_productos_por_marca(lista, marca):
     print(f"Insumos de la marca: {marca}")
     print("_______________________________________________________________")
-    print("|    ID   |          Nombre           |   Precio   |")
+    print("|    ID   |          Nombre           |   Precio   |   stock  |")
     print("|-------------------------------------------------------------|")
     for producto in lista:
         if producto['marca'] == marca:
-            print(f"| {producto['id']:6} | {producto['nombre']:25} | {producto['precio']:.2f} |")
+            print(f"| {producto['id']:6} | {producto['nombre']:25} |  {producto['precio']:.2f}  |  {producto['stock']:2}  |")
     print("|_____________________________________________________________|")
 
 
@@ -242,9 +249,10 @@ def listar_insumo_por_marca(lista, marca):
             f"|      Insumos de la marca: {marca.capitalize():20}                         |")
         print(
             "|____________________________________________________________________________|")
+        print("|    ID   |          Nombre           |      Precio      |      Stock      |")
         for insumo in insumos_por_marca:
             print(
-                f"|Id: {insumo['id']:2} | Nombre: {insumo['nombre']:20} | Precio: {insumo['precio']:6}|")
+                f"|Id: {insumo['id']:2} | Nombre: {insumo['nombre']:20} | Precio: {insumo['precio']:.2f} |   {insumo['stock']:2} |")
             print(
                 "|----------------------------------------------------------------------------|")
         print(
@@ -298,6 +306,7 @@ def realizar_compras(lista):
 
             producto_encontrado = producto_seleccionado["nombre"]
             precio = producto_seleccionado["precio"]
+            stock = producto_seleccionado["stock"]
 
             try:
                 cantidad = int(input("Ingrese la cantidad a comprar: "))
@@ -308,6 +317,18 @@ def realizar_compras(lista):
                 if cantidad is None or cantidad <= 0:
                     print("Error: la cantidad debe ser un numero entero positivo!")
                     continue
+            
+            if cantidad > stock:
+                print(f"No hay suficiente stock disponible. Stock actual: {stock}")
+                try:
+                    respuesta = input("Desea comprar una cantidad menor? (s/n): ")
+                except ValueError:
+                    print("Ingrese solo (s/n)!")
+                    respuesta = ''
+                else:
+                    if respuesta.lower() != 's':
+                        continue
+                cantidad = stock #se baja automaticamente a la cantidad de stock que haya
             
             subtotal = calcular_subtotal(cantidad, precio)
             total += subtotal
@@ -546,5 +567,65 @@ def guardar_tipo_archivo(lista):
         print("ERROR: Formato de archivo no valido!")
 
 
+#recuperatorio
+
+#D
+def mostrar_stock_por_marca(lista):
+    
+    pedir_marca = True
+    
+    listar_cantidad_por_marca(lista)
+    
+    while pedir_marca:
+        marca_ingresada = str(input("Ingresa la marca deseada ('q' para salir): ")).capitalize()
+
+        for producto in lista:
+            if producto["marca"] == marca_ingresada:
+                pedir_marca = False
+                break
+        
+        if pedir_marca:
+            print(f"No se encontro la marca: {marca_ingresada}")
 
 
+    stock_total = 0
+    for producto in lista:
+        if producto['marca'] == marca_ingresada:
+            stock_total += producto["stock"]
+    
+    print("|---------------------------------------------------------|")
+    print(f"|          lista de stock: '{marca_ingresada}'                        |")
+    print("|---------------------------------------------------------|")
+    print(f"|Stock total de la marca: {stock_total}                              |")
+    print("|---------------------------------------------------------|")
+
+
+#C
+def imprimir_bajo_stock(lista):
+    
+    productos_bajo_stock = []
+    for producto in lista:
+        if producto.get("stock", 0) <= 2:
+            productos_bajo_stock.append((producto["nombre"], producto["stock"]))
+
+    if not productos_bajo_stock:
+        print("No hay productos con 2 o menos unidades de stock.")
+
+    while True:
+        try:
+            nombre_archivo = str(input("Ingrese nombre del archivo CSV a generar: "))
+            if not nombre_archivo:
+                raise ValueError
+            else:
+                nombre_archivo = nombre_archivo.strip() + ".csv"
+                break
+        except ValueError:
+            print("No puede ingresar un nombre de archivo en blanco!")
+
+    
+    with open(nombre_archivo, "w", encoding="utf=8") as archivo_csv:
+        archivo_csv.write("Nombre producto | Stock\n")
+        for producto in productos_bajo_stock:
+            archivo_csv.write(f"{producto[0]}, {producto[1]}\n")
+
+    print(f"Archivo CSV generado!: {nombre_archivo}")
