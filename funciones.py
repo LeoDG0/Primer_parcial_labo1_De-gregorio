@@ -28,28 +28,43 @@ def menuPrincipal():
 
 
 # 1:
-def cargar_datos_desde_csv():
+import csv
 
+def cargar_datos_desde_csv():
     insumos = []  # lista para almacenar
 
-    with open("insumos.csv", "r", encoding='utf-8') as archivo:
-        next(archivo)
+    while True:
+        nombre_archivo = str(input("Ingrese el nombre del archivo: "))
+        nombre_archivo = nombre_archivo.strip() + ".csv"
+        if nombre_archivo:
+            try:
+                with open(nombre_archivo, "r", encoding='utf-8') as archivo:
+                    next(archivo)
 
-        for linea in archivo:
-            # saca los espacios en blanco y separa por campos en base a la ,
-            linea = linea.strip("\n").split(',')
+                    for linea in archivo:
+                        # saca los espacios en blanco y separa por campos en base a la ,
+                        linea = linea.strip("\n").split(',')
 
-            insumo = {
-                'id': int(linea[0]),
-                'nombre': linea[1],
-                'marca': linea[2],
-                'precio': float(linea[3].replace('$', '')),
-                'caracteristicas': linea[4].split("~")
-            }  # obtengo los datos
+                        if linea[0]:  # Verificar si la cadena no está vacía
+                            insumo = {
+                                'id': int(linea[0]),
+                                'nombre': linea[1],
+                                'marca': linea[2],
+                                'precio': float(linea[3].replace('$', '')),
+                                'caracteristicas': linea[4].split("~")
+                            }  # obtengo los datos
 
-            insumos.append(insumo)  # agrego el diccionario a la lista
-
+                            insumos.append(insumo)  # agrego el diccionario a la lista
+                break
+            
+            except FileNotFoundError:
+                print("El archivo no existe. Ingrese un nombre valido!")
+        else:
+            print("Debe ingresar un nombre de archivo!")
+    
     return insumos
+
+
 
 
 # 2:
@@ -76,18 +91,17 @@ def listar_cantidad_por_marca(lista):
 # 3:
 def listar_insumos_por_marca(lista):
 
-    marcas = {}  # diccionario para almacenar
-
+    marcas = {}  #diccionario para almacenar
+    
     for insumo in lista:
         marca = insumo['marca']
         nombre = insumo['nombre']
         precio = insumo['precio']
 
         if marca in marcas:
-            # si esta la marca en la lista agrega el insumo y el precio #uso tuplas para almacenar cada insumo
+            #si la marca ya existe en el diccionario, agrega el insumo y el precio
             marcas[marca].append((nombre, precio))
         else:
-            # si no esta la marca la crea y agrega el insumo y el precio
             marcas[marca] = [(nombre, precio)]
 
     print(" _______________________________________________________________________________")
@@ -95,12 +109,20 @@ def listar_insumos_por_marca(lista):
     print("|_______________________________________________________________________________|")
     print("|                MARCA                   |             NOMBRE            |PRECIO|")
     print("|_______________________________________________________________________________|")
-    for marca in marcas:  # recorro las marcas
+
+    for marca in marcas:  #recorro las marcas
+        first = True  #flag para indicar si es la primera vez que se muestra la marca
         for nombre, precio in marcas[marca]:  # recorro los items
-            print(f"|{marca:40}|{nombre:31}|{precio:5.2f} |")
-            print(
-                "|-------------------------------------------------------------------------------|")
+            if first:
+                print("|-------------------------------------------------------------------------------|")
+                print(f"|{marca:40}|{nombre:31}|{precio:5.2f} |")
+                first = False
+            else:
+                print(f"|{' ':40}|{nombre:31}|{precio:5.2f} |")
+                #print("|-------------------------------------------------------------------------------|")
     print("|_______________________________________________________________________________|")
+
+
 
 
 # 4:
@@ -239,68 +261,68 @@ def realizar_compras(lista):
     
     listar_cantidad_por_marca(lista)
         
-    flag_marca = True
-    salir = 's'
-    flag_calculos = False
-    flag_producto = False
-    seguir_comprando = True #inicializo las flags
+    seguir_comprando = True
 
-    while seguir_comprando: #se encarga de verificar si la marca que se ingreso existe
-        
-        while flag_marca:
-            marca_ingresada = str(input("Ingrese marca deseada('q' para salir): ")).capitalize()
-            if(marca_ingresada.lower() == 'q'):
-                salir = 's'
-                break
-            else:
-                for item in lista:
-                    if marca_ingresada.capitalize() == item['marca']:
-                        flag_insumo = True
-                        flag_marca = False
-
-            while flag_insumo: #verifica que el ID que se ingreso existe y agrega los valores
-                salir_insumos = 'n'
-                for producto in lista:
-                    if(marca_ingresada == producto['marca']):
-                        listar_insumo_por_marca(lista, marca_ingresada)
-                        insumo = int(input("Ingrese el ID del producto: "))
-                        if (producto['id'] == insumo):
-                            producto_encontrado = producto['nombre']
-                            precio = producto['precio']
-                            flag_producto = True
-                            flag_calculos = True  #mediante las flags activo y desactivo los bucles while cambiando el valor de las flags
-
-                        if(flag_producto == False):
-                            print(f"Error: No se encontro el ID: {insumo}!")
-                            break
-                        
-                        print("Ingresa la cantidad a comprar: ")
-                        cantidad = validar_int_input()
-
-                        salir_insumos = str(input("Desea agregar otro insumo de esta marca?(s/n)"))
-                        if(salir_insumos.lower() == 'n'):
-                            flag_insumo = False
-                            break
-
-                if(flag_calculos == True):
-                    if(cantidad > 0 and precio > 0):
-                        
-                        subtotal = calcular_subtotal(cantidad, precio)
-                        total += subtotal
-                        compra.append((producto_encontrado, cantidad, precio, float(subtotal))) #hago todo los calculos y los agrego a la lista de compra en tuplas
-
-                        print("Compra agregada al carrito!")
-                    else:
-                        print("Ocurrio un error!")
-                        continue
-        
-        salir = str(input("Desea seguir comprando?(s/n): "))
-        if(salir == "s"):
-            flag_marca = True
-        elif(salir == 'n'):
-            generar_factura(compra, total) #llamo a la funcion que genera el txt y le paso la lista de compra y el total
-            seguir_comprando = False
+    while seguir_comprando:
+        marca_ingresada = str(input("Ingresa la marca deseada ('q' para salir): ")).capitalize()
+        if marca_ingresada.lower() == "q":
             break
+
+        productos_marcas = []
+        for producto in lista:
+            if producto["marca"] == marca_ingresada:
+                productos_marcas.append(producto)
+        
+        if not productos_marcas:
+            print(f"No se encontro la marca '{marca_ingresada}' en la lista de productos!")
+            continue
+
+        flag_insumo = True
+        producto_seleccionado = None
+        while flag_insumo:
+            listar_insumo_por_marca(lista, marca_ingresada)
+            try:
+                insumo = int(input("Ingrese ID del producto: "))
+            except ValueError:
+                    print("No puede ingresar un ID en blanco!")
+                    insumo = ''
+            else:
+                for producto in productos_marcas:
+                        if producto["id"] == insumo:
+                            producto_seleccionado = producto
+                            break
+            
+            if producto_seleccionado is None:
+                print(f"No se encontro el ID: {insumo} en la marca '{marca_ingresada}'!")
+                continue
+
+            producto_encontrado = producto_seleccionado["nombre"]
+            precio = producto_seleccionado["precio"]
+
+            try:
+                cantidad = int(input("Ingrese la cantidad a comprar: "))
+            except ValueError:
+                    print("No puede ingresar cantidad en blanco!")
+                    cantidad = ''
+            else:
+                if cantidad is None or cantidad <= 0:
+                    print("Error: la cantidad debe ser un numero entero positivo!")
+                    continue
+            
+            subtotal = calcular_subtotal(cantidad, precio)
+            total += subtotal
+            compra.append((producto_encontrado, cantidad, precio, float(subtotal)))
+
+            print("Compra agregada al carrito!")
+
+            respuesta = input("Desea agregar otro producto de esta marca? (s/n): ")
+            if respuesta.lower() != 's':
+                flag_insumo = False
+            
+        respuesta = input("Desea seguir comprando?(s/n): ")
+        if respuesta.lower() != 's':
+            generar_factura(compra, total)
+            seguir_comprando = False
 
 
 def calcular_subtotal(cantidad, precio):
@@ -308,6 +330,10 @@ def calcular_subtotal(cantidad, precio):
 
 
 def generar_factura(compra, total):
+    
+    nombre_archivo = str(input("Ingrese el nombre de la factura: "))
+    nombre_archivo = nombre_archivo.strip() + ".txt"
+
     factura = "Factura de la compra:\n\n"
     subtotal = 0
 
@@ -318,7 +344,7 @@ def generar_factura(compra, total):
     
     factura += f"total de compra: ${total}"
 
-    with open("factura.txt","w") as archivo:
+    with open(nombre_archivo,"w") as archivo:
         archivo.write(factura)
 
 
@@ -330,7 +356,7 @@ def guardar_en_formato_json(lista):
     productos_filtrados = list(filter(lambda producto: "Alimento" in producto["nombre"], lista))
 
     with open("productos_alimentos.json", "w") as archivo:
-        json.dump(productos_filtrados, archivo, indent=4, separators=(", "))
+        json.dump(productos_filtrados, archivo, indent=4)
 
     print("Archivo JSON generado!")
 
@@ -369,12 +395,13 @@ def actualizar_precios(lista):
     
     productos_actualizados = list(map(aplicar_aumento,lista))
 
-    with open("insumos.csv", "w") as archivo:
+    with open("insumos.csv", "w", encoding="utf=8") as archivo:
         archivo.write("ID,NOMBRE,MARCA,PRECIO,CARACTERISTICAS\n")
 
         for item in productos_actualizados:
-            linea = f"{item['id'],item['nombre'],item['marca'],item['precio'],item['caracteristicas']}\n"
-
+            caracteristicas = "~".join(item['caracteristicas'])
+            linea = "{},{},{},${},{}\n".format(item['id'], item['nombre'], item['marca'], item['precio'], caracteristicas)
+            
             archivo.write(linea)
 
     print("Los precios se actualizaron correctamente!")
@@ -408,45 +435,77 @@ def agregar_productos(lista, marcas):
 
     nuevo_insumo = {}
 
-    #pido el id 
-    while True:
-        id_insumo_nuevo = int(input("Ingrese un ID para el producto: "))
-
-        flag_id = False
-        for item_id in lista:
-            if(id_insumo_nuevo == item_id["id"]):
-                flag_id = True
-                
-            
-        if (flag_id):
-            print("El ID ingresado ya existe. Intente con ID mayores a 50: ")
-        else:
-            nuevo_insumo["id"] = id_insumo_nuevo
-            break
+    max_id = 0
+    for item in lista:
+        if item["id"] > max_id:
+            max_id = item["id"]
+    
+    nuevo_insumo["id"] = max_id + 1
 
 
     #pido el insumo
-    nombre_insumo = str(input("Ingrese nombre del producto: "))
-    nuevo_insumo["nombre"] = nombre_insumo
+    while True:
+        try:
+            nombre_insumo = str(input("Ingrese nombre del producto: "))
+            if not nombre_insumo:
+                print("El nombre del producto no puede estar vacio!")
+            else:
+                nuevo_insumo["nombre"] = nombre_insumo
+                break
+        except ValueError:
+            print("Error! Reingrese nombre.")
 
     #pido la marca
     mostrar_marcas(marcas)
-    marca_indice = int(input("Ingrese el numero de la marca que quiera agregar: "))
-    nuevo_insumo["marca"] = marcas[marca_indice]
+    while True:
+        try:
+            marca_indice = int(input("Ingrese el numero de la marca que quiera agregar: "))
+        except ValueError:
+            print("Error! Reingrese marca.")
+        else:
+            if marca_indice <= 0 or marca_indice >= len(marcas):
+                print("El numero de marca ingresado no es valido!")
+            nuevo_insumo["marca"] = marcas[marca_indice]
+            break
 
     #pido el precio
-    precio = float(input("Ingrese el precio del producto: "))
-    nuevo_insumo['precio'] = precio
-
+    while True:
+        try:
+            precio = float(input("Ingrese el precio del producto: "))
+        except ValueError:
+            print("Error! Reingrese precio.")
+        else:
+            if precio <= 0:
+                print("El precio debe ser mayor a 0!")
+            else:
+                nuevo_insumo['precio'] = precio
+                break
 
     #pido las caracteristicas
     caracteristicas = []
-    cantidad_caracteristica = int(input("Ingrese el numero de caracteristicas a agregar (1/3): "))
-    cantidad_caracteristica = max(1, min(cantidad_caracteristica, 3))
+    while True:
+        try:
+            cantidad_caracteristica = int(input("Ingrese el numero de caracteristicas a agregar (1/3): "))
+        except ValueError:
+            print("Error: Ingrese un numero valido!")
+        else:
+            if(cantidad_caracteristica < 1 or cantidad_caracteristica > 3):
+                print("El minimo de caracteristicas es 1 y el maximo 3!")
+            else:
+                cantidad_caracteristica = max(1, min(cantidad_caracteristica, 3))
+                break
 
     for item in range(cantidad_caracteristica):
-        caracteristica = str(input(f"Ingrese la caracteristica {item + 1}: "))
-        caracteristicas.append(caracteristica)
+        while True:
+            try:
+                caracteristica = str(input(f"Ingrese la caracteristica {item + 1}: ")).capitalize()
+            except ValueError:
+                print("Error! Reingrese caracteristica.")
+            else:
+                if not caracteristica:
+                    print("Ingreso una caracteristica vacia!")
+                caracteristicas.append(caracteristica)
+                break
 
     nuevo_insumo["caracteristicas"] = caracteristicas
 

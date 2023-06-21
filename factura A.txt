@@ -1,0 +1,4 @@
+Factura de la compra:
+
+Alimento para perros - Cantidad: 3 - Precio: $21.138 - Subtotal: $63.41
+total de compra: $63.414
